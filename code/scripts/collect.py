@@ -7,8 +7,9 @@ import sys
 from multiprocessing import Process, Pool
 
 MAX_REVIEWS = 5000
-SMP_RATE = 0.01
+SMP_RATE = 0.001
 MAX_IDS = 100000000
+DB_NAME = 'imdb_m.db'
 
 def save_title_info(title, conn):
     c = conn.cursor()
@@ -55,20 +56,25 @@ def save_review(ttid, conn, imdb):
             ''', info)
     conn.commit()
 
-def save_all_info(ttid, imdb, conn):
+def save_all_info(ttid, imdb, dbname):
+    conn = sqlite3.connect(dbname)
     try:
         if imdb.title_exists(ttid):
             title = imdb.get_title_by_id(ttid)
             save_title_info(title, conn)
             save_review(ttid, conn, imdb)
+            conn.close()
             return True
         else:
+            conn.close()
             return False
     except:
         print >> sys.stderr, 'some error when checking %s' % ttid
+        conn.close()
         return False
 
-def create_table(conn):
+def create_table(dbname):
+    conn = sqlite3.connect(dbname)
     c = conn.cursor()
     c.execute('''
         DROP TABLE IF EXISTS movie
@@ -92,41 +98,23 @@ def create_table(conn):
         user_score_count INTEGER)
         ''')
     conn.commit()
+    conn.close()
 
-def create_subdatabase(paras):
-    start = paras[0]
-    end = paras[1] 
-    dbname = paras[2]
-    print 'iterate over %d to %d and save to %s' % (start, end, dbname)
-    conn = sqlite3.connect(dbname)
-    create_table(conn)
+def single_ttid(i):
+    ttid = 'tt'+str(i).zfill(7)
     imdb = Imdb(anonymize=True)
-    np.random.seed(0)
-    cnt = 0
-    for i in range(start, end):
-        ttid = 'tt'+str(i).zfill(7)
-        if i % 1000000 == 0:
-            print 'iterate %d' % i
-        if np.random.rand() < SMP_RATE and save_all_info(ttid, imdb, conn):
-            time.sleep(1)
-            cnt += 1
-            if cnt % 100 == 0:
-                print 'save %d' %cnt
-    print '%d movies in %s' % (cnt, dbname)
+    if save_all_info(ttid, imdb, DB_NAME):
+        time.sleep(0.1)
+
 
 if __name__ == "__main__":
-    start = 0
-    size = 8
-    step = MAX_IDS / size
-    paras = []
-    for i in range(size):
-        start = i * step
-        end = start + step
-        name = 'imdb'+str(i)+'.db'
-        paras.append((start, end, name))
+    create_table(DB_NAME)
+    np.random.seed(0)
+    smp = np.random.choice(MAX_IDS, int(MAX_IDS*SMP_RATE))
+    print 'smp size %d' % len(smp)
+    p = Pool()
+    p.map(single_ttid, (i for i in smp))
 
-    p = Pool(size)
-    p.map(create_subdatabase, paras)
 
     
 

@@ -43,3 +43,4 @@
 * http://vlado.fmf.uni-lj.si/vlado/papers/IMDBvis.pdf
 * https://github.com/richardasaurus/imdb-pie
 * http://sqlitebrowser.org/
+* http://stackoverflow.com/questions/6969820/sqlite3-and-multiprocessing
