@@ -1,7 +1,7 @@
 # 15-688 Team Project
 
 ## Doc
-* [Data Collection](DataCollection.md)
+* [Data Collection](doc/DataCollection.md)
 
 
 ## References

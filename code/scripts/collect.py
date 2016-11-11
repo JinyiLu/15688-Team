@@ -56,15 +56,16 @@ def save_review(ttid, conn, imdb):
     conn.commit()
 
 def save_all_info(ttid, imdb, conn):
-    if imdb.title_exists(ttid):
-        try:
+    try:
+        if imdb.title_exists(ttid):
             title = imdb.get_title_by_id(ttid)
             save_title_info(title, conn)
             save_review(ttid, conn, imdb)
-        except:
-            print >> sys.stderr, 'some error when saving %s' % ttid
-        return True
-    else:
+            return True
+        else:
+            return False
+    except:
+        print >> sys.stderr, 'some error when checking %s' % ttid
         return False
 
 def create_table(conn):
