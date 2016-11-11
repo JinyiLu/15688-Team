@@ -39,3 +39,4 @@
 * http://vlado.fmf.uni-lj.si/vlado/papers/IMDBvis.pdf
 * https://github.com/richardasaurus/imdb-pie
 * http://sqlitebrowser.org/
+* http://stackoverflow.com/questions/18519420/how-to-parallelize-big-for-loops-in-python

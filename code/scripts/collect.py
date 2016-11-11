@@ -7,9 +7,9 @@ import sys
 from multiprocessing import Process, Pool
 
 MAX_REVIEWS = 5000
-SMP_RATE = 0.001
+SMP_RATE = 0.01
 MAX_IDS = 100000000
-DB_NAME = 'imdb_m.db'
+DB_NAME = 'imdb_m_notv_withvote.db'
 
 def save_title_info(title, conn):
     c = conn.cursor()
@@ -61,8 +61,9 @@ def save_all_info(ttid, imdb, dbname):
     try:
         if imdb.title_exists(ttid):
             title = imdb.get_title_by_id(ttid)
-            save_title_info(title, conn)
-            save_review(ttid, conn, imdb)
+            if 'tv' not in title.type and title.votes > 0:
+                save_title_info(title, conn)
+                save_review(ttid, conn, imdb)
             conn.close()
             return True
         else:
@@ -106,14 +107,13 @@ def single_ttid(i):
     if save_all_info(ttid, imdb, DB_NAME):
         time.sleep(0.1)
 
-
 if __name__ == "__main__":
     create_table(DB_NAME)
     np.random.seed(0)
     smp = np.random.choice(MAX_IDS, int(MAX_IDS*SMP_RATE))
     print 'smp size %d' % len(smp)
     p = Pool()
-    p.map(single_ttid, (i for i in smp))
+    p.map(single_ttid, smp.tolist())
 
 
     
