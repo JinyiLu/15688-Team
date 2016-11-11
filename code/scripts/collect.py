@@ -114,13 +114,15 @@ if __name__ == "__main__":
     start = 0
     size = 8
     step = MAX_IDS / size
+    paras = []
     for i in range(size):
         start = i * step
         end = start + step
         name = 'imdb'+str(i)+'.db'
-        p = Process(target=create_subdatabase, args=(start, end, name))
-        p.start()
-        p.join()
+        paras.append((start, end, name))
+
+    p = Pool(size)
+    p.map(create_subdatabase, paras)
 
     
 
