@@ -3,7 +3,6 @@
 ## Doc
 * [Data Collection](doc/DataCollection.md)
 
-
 ## References
 * https://www.zhihu.com/question/19617630
 * https://www.quora.com/topic/Recommender-Systems-1

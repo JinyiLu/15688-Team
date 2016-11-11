@@ -1,8 +1,7 @@
 # IMDb Data Collection
 
-## Note
-* pid 22486
-* pid on google cloud 21670 (with 8 process)
+## Code
+* * [code/scripts/collect.py]
 
 ## Data
 * moive
