@@ -92,7 +92,10 @@ def create_table(conn):
         ''')
     conn.commit()
 
-def create_subdatabase(start, end, dbname):
+def create_subdatabase(paras):
+    start = paras[0]
+    end = paras[1] 
+    dbname = paras[2]
     print 'iterate over %d to %d and save to %s' % (start, end, dbname)
     conn = sqlite3.connect(dbname)
     create_table(conn)
