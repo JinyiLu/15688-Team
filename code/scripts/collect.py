@@ -4,7 +4,7 @@ import time
 import sqlite3
 import json
 import sys
-from multiprocessing import Process
+from multiprocessing import Process, Pool
 
 MAX_REVIEWS = 5000
 SMP_RATE = 0.01
