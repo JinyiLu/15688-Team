@@ -1,7 +1,7 @@
 # IMDb Data Collection
 
 ## Code
-* * [code/scripts/collect.py]
+* [code](../code/scripts/collect.py)
 
 ## Data
 * moive
