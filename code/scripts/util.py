@@ -39,6 +39,18 @@ def db_to_matrix(dbname):
 
     return movies, users, rating_m
 
+def split(rating):
+    np.random.seed(0)
+    # total = rating.nonzero()[0].shape[0]
+    mask = np.random.rand(rating.shape[0], rating.shape[1])
+    train = rating[np.nonzero(mask < 0.6)]
+    valid = rating[np.nonzero(np.logical_and(mask >= 0.6, mask < 0.8))]
+    test = rating[np.nonzero(mask > 0.8)]
+
+    return train, valid, test
+
+
+
 if __name__ == "__main__":
     movies, users, rating_m = db_to_matrix(DB_NAME)
     np.save('movies', movies)
