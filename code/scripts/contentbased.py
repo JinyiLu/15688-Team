@@ -1,6 +1,5 @@
 import scipy.sparse as sp
 import numpy as np
-import sqlite3
 from util import *
 
 DATA_DIR = '../../data/'
@@ -16,7 +15,3 @@ if __name__ == "__main__":
     # split into trian, valid, test set
     train, valid, test = split_dataset(rating)
     print train.shape, valid.shape, test.shape
-    print 'total num of ratings: %d' % rating.nonzero()[0].shape[0]
-    print 'train num of ratings: %d' % train.nonzero()[0].shape[0]
-    print 'valid num of ratings: %d' % valid.nonzero()[0].shape[0]
-    print 'test num of ratings: %d' % test.nonzero()[0].shape[0]
