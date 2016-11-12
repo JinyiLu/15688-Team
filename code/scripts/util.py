@@ -1,8 +1,25 @@
 import scipy.sparse as sp
 import numpy as np
 import sqlite3
+import ast
 
+DATA_DIR = '../../data/'
 DB_NAME = '../../data/imdb_m_notv_withvote.db'
+
+def load_movie_plot(dbname, movies):
+    movie_plot = {}
+
+    conn = sqlite3.connect(DB_NAME)
+    c = conn.cursor()
+
+    for r in c.execute('''
+        SELECT imdb_id, plots
+        FROM movie
+        '''):
+        if r[0] in movies:
+            movie_plot[r[0]] = ast.literal_eval(r[1])
+    return movie_plot
+
 
 def save_sparse_csr(filename,array):
     np.savez(filename,data = array.data ,indices=array.indices,
@@ -37,6 +54,7 @@ def db_to_matrix(dbname):
     for k in rating:
         rating_m[users.index(k[0]), movies.index(k[1])] = rating[k]
 
+    conn.close()
     return movies, users, rating_m
 
 def split_dataset(rating):

@@ -3,8 +3,6 @@ import numpy as np
 import sqlite3
 from util import *
 
-DATA_DIR = '../../data/'
-
 if __name__ == "__main__":
     # load from file
     rating = load_sparse_csr(DATA_DIR+'rating.npz')
