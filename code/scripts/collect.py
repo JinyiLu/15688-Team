@@ -7,9 +7,9 @@ import sys
 from multiprocessing import Process, Pool
 
 MAX_REVIEWS = 5000
-SMP_RATE = 0.01
+SMP_RATE = 0.1
 MAX_IDS = 100000000
-DB_NAME = 'imdb_m_notv_withvote.db'
+DB_NAME = 'imdb_m_0.1.db'
 
 def save_title_info(title, conn):
     c = conn.cursor()
@@ -61,7 +61,7 @@ def save_all_info(ttid, imdb, dbname):
     try:
         if imdb.title_exists(ttid):
             title = imdb.get_title_by_id(ttid)
-            if 'tv' not in title.type and title.votes > 0:
+            if title.votes > 0:
                 save_title_info(title, conn)
                 save_review(ttid, conn, imdb)
             conn.close()
