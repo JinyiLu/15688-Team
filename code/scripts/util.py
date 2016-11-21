@@ -2,9 +2,11 @@ import scipy.sparse as sp
 import numpy as np
 import sqlite3
 import ast
+from collections import Counter
 
 DATA_DIR = '../../data/'
-DB_NAME = '../../data/imdb_m_notv_withvote.db'
+# DB_NAME = '../../data/imdb_m_notv_withvote.db'
+DB_NAME = '../../data/imdb_final.db'
 
 def load_movie_plot(dbname, movies):
     movie_plot = {}
@@ -57,6 +59,15 @@ def db_to_matrix(dbname):
     conn.close()
     return movies, users, rating_m
 
+def count_values(rating):
+    user_mask = (rating != 0).sum(axis=1)
+    user_mask = np.squeeze(np.asarray(user_mask))
+
+    cnt = Counter(user_mask)
+    print cnt
+    return cnt
+
+
 def split_dataset(rating):
     np.random.seed(0)
     # total = rating.nonzero()[0].shape[0]
@@ -64,6 +75,15 @@ def split_dataset(rating):
     train = rating.multiply(mask<0.6)
     valid = rating.multiply(np.logical_and(mask >= 0.6, mask < 0.8))
     test = rating.multiply(mask > 0.8)
+
+    # remove no rating users
+    # user_mask_train = (np.sum(train, axis=1) == 0)
+    # user_mask_valid = (np.sum(valid, axis=1) == 0)
+    # user_mask_test = (np.sum(test, axis=1) == 0)
+
+    # user_mask = (user_mask_train | user_mask_valid | user_mask_test)
+
+    # print np.sum(user_mask_train), np.sum(user_mask_valid), np.sum(user_mask_test), np.sum(user_mask)
 
     return train, valid, test
 
