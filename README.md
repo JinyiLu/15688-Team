@@ -17,6 +17,7 @@
 
 ## Doc
 * [Data Collection](doc/DataCollection.md)
+* [Midway](doc/midway.md)
 
 ## References
 * https://www.zhihu.com/question/19617630

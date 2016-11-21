@@ -1,3 +1,5 @@
+## Intro
+
 ## Data Set
 * What's IMDb
 * Data preprocessing
@@ -26,3 +28,5 @@
 ## Recommendation System
 * Sparsity -> traidional methods may not work
 * Potentional solutions
+
+## Reference
