@@ -3,3 +3,4 @@
 data/
 *.pyc
 code/.ipynb_checkpoints/
+code/imdb_data/
