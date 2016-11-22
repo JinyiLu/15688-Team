@@ -1,3 +1,5 @@
+## [Midway Report](../code/IMDB Midway.ipynb)
+
 ## Intro
 
 ## Data Set
