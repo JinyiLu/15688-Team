@@ -1,0 +1,3 @@
+Your feedback from Zico is: 
+
+This is a great start regarding data collection.  Since a lot of your sparsity here is likely drawn from users/movies that have very few ratings (and these are clearly settings for which it is difficult to make any inference about the movie or user).  I would recommend filtering out all entries that don't have some minimum number of reviews (both user and movie reviews).  This should help with your sparsity a lot, and make the problem more addressable with standard recommender systems.  If you want to get fancier with methods that can integrate both per-user and per-movie features, I'd recommend looking into factorization machines (http://www.libfm.org/). 
