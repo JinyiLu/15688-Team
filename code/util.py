@@ -11,7 +11,7 @@ DB_NAME = '../../data/imdb_final.db'
 def load_movie_plot(dbname, movies):
     movie_plot = {}
 
-    conn = sqlite3.connect(DB_NAME)
+    conn = sqlite3.connect(dbname)
     c = conn.cursor()
 
     for r in c.execute('''
