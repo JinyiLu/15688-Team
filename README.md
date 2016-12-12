@@ -28,3 +28,4 @@
 * http://online.cambridgecoding.com/notebooks/eWReNYcAfB/implementing-your-own-recommender-systems-in-python-2#implementing-your-own-recommender-systems-in-python
 * https://www.themarketingtechnologist.co/building-a-recommendation-engine-for-geek-setting-up-the-prerequisites-13/
 * http://stackoverflow.com/questions/1894269/convert-string-representation-of-list-to-list-in-python
+* https://github.com/arogozhnikov/arogozhnikov.github.io/blob/master/notebooks/2016-02-15-TestingLibFM.ipynb
