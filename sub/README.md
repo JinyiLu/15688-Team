@@ -14,6 +14,7 @@
     * final report
 
 ## nbviewer link
+* [Midway Report](http://nbviewer.jupyter.org/github/JinyiLu/15688-Team/blob/master/code/IMDB%20Midway.ipynb)
 * [Final Report](http://nbviewer.jupyter.org/github/JinyiLu/15688-Team/blob/master/sub/IMDB%20Final.ipynb)
 
 ## Data Files
