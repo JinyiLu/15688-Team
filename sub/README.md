@@ -10,8 +10,6 @@
     * python collect.py
 * util.py
     * some tool functions
-* IMDB Midway.ipynb
-    * midway report
 * IMDB Final.ipynb
     * final report
 
