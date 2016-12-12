@@ -1,7 +1,7 @@
 # IMDb Review Analysis and Movie Recommendation
 
 ## Group Members
-* Duan Ying (yduan1)
+* Ying Duan (yduan1)
 * Jinyi Lu (jinyil)
 
 ## Code
