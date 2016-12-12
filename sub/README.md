@@ -16,7 +16,10 @@
     * final report
 
 ## nbviewer link
-* 
+* [Final Report](http://nbviewer.jupyter.org/github/JinyiLu/15688-Team/blob/master/sub/IMDB%20Final.ipynb)
 
 ## Data Files
 * [imdb_data.zip](https://drive.google.com/file/d/0B9XkguO2d05IZFZZUUstVTFpeGs/view?usp=sharing)
+
+## Github Repository for Updates
+* https://github.com/JinyiLu/15688-Team
