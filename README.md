@@ -1,6 +1,6 @@
 # 15-688 Team Project
 
-## Experiments
+## Plan
 * Data Set
     * user * item (rating)
     * random split train, valid, test
@@ -18,6 +18,7 @@
 ## Doc
 * [Data Collection](doc/DataCollection.md)
 * [Midway](doc/midway.md)
+* [Dec 11, 2016 Submit](sub/README.md)
 
 ## References
 * https://www.zhihu.com/question/19617630
